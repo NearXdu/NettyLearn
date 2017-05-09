@@ -18,26 +18,26 @@ public class TimeServerHandler implements Runnable {
     }
 
     @Override
-    public void run() {
+    public void run() {//run方法
         BufferedReader in = null;
         PrintWriter out = null;
         try {
             in = new BufferedReader(new InputStreamReader(
-                    this.socket.getInputStream()));
-            out = new PrintWriter(this.socket.getOutputStream(), true);
+                    this.socket.getInputStream()));//输入缓冲
+            out = new PrintWriter(this.socket.getOutputStream(), true);//输出缓冲
             String currentTime = null;
             String body = null;
             while (true) {
-                body = in.readLine();
+                body = in.readLine();//读入消息
                 if (body == null)
                     break;
                 System.out.println("The time server receive order : " + body);
                 currentTime = "QUERY TIME ORDER".equalsIgnoreCase(body) ? new java.util.Date(
-                        System.currentTimeMillis()).toString() : "BAD ORDER";
+                        System.currentTimeMillis()).toString() : "BAD ORDER";//读取请求
                 out.println(currentTime);
             }
 
-        } catch (Exception e) {
+        } catch (Exception e) {//
             if (in != null) {
                 try {
                     in.close();
