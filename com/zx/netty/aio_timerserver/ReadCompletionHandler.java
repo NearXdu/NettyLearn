@@ -13,7 +13,8 @@ public class ReadCompletionHandler implements CompletionHandler<Integer, ByteBuf
     private AsynchronousSocketChannel channel;
 
     public ReadCompletionHandler(AsynchronousSocketChannel asynchronousSocketChannel) {
-        this.channel = asynchronousSocketChannel;
+        if (this.channel == null)
+            this.channel = asynchronousSocketChannel;
     }
 
 
@@ -71,6 +72,12 @@ public class ReadCompletionHandler implements CompletionHandler<Integer, ByteBuf
 
     @Override
     public void failed(Throwable throwable, ByteBuffer byteBuffer) {
+        try {
+            this.channel.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
 
     }
 }
