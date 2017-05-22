@@ -1,4 +1,4 @@
-package com.zx.netty.nio_timeserver;
+package com.zx.nio.nio_timeserver;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;

@@ -1,4 +1,4 @@
-package com.zx.netty.bio;
+package com.zx.nio.bio;
 
 import java.io.BufferedReader;
 import java.io.IOException;
